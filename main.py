@@ -2,7 +2,7 @@ from flask import Flask, request, make_response, redirect, render_template
 
 app = Flask(__name__) #Se instancia la aplicación
 
-to_dos = ['to_do1','to_do2','to_do3']
+to_dos = ['Comprar pan','Pagar la luz','Dormir']
 
 @app.route('/')
 def index():

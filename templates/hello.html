@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+    {{ super() }}
+    Bienvenido
+{% endblock %}
+
+{% block content %}
     {% if user_ip %}
         <h1>Hello world platzi, tu ip es {{ user_ip }}</h1>
     {% else %}
@@ -13,10 +15,7 @@
 
     <ul>
         {% for to_do in to_dos %}
-            <li>{{ to_do }}</li>
+            {{ macros.render_todo(to_do) }}
         {% endfor %}
     </ul>
-
-
-</body>
-</html>
+{% endblock %}
