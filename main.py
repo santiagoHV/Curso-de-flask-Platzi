@@ -4,6 +4,10 @@ app = Flask(__name__) #Se instancia la aplicación
 
 to_dos = ['Comprar pan','Pagar la luz','Dormir']
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html', error = error)
+
 @app.route('/')
 def index():
     user_ip = request.remote_addr #Obtiene de request la ip local
