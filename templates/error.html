@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ error_code }}
+{% endblock %}
+
+{% block content %}
+
+    {% if error_code == 404 %}
+        <h1>Lo sentimos, no encontramos lo que buscabas</h1>
+        {{ error }}
+    {% elif error_code == 500 %}
+        <h1>Error en el servidor, prueba recargar mas tarde</h1>
+        {{ error }}
+    {% endif %}
+
+{% endblock %}

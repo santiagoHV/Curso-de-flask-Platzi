@@ -1,12 +1,21 @@
 from flask import Flask, request, make_response, redirect, render_template
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__) #Se instancia la aplicación
+bootstrap = Bootstrap(app)# se instancia bootstrap
+
+
 
 to_dos = ['Comprar pan','Pagar la luz','Dormir']
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('404.html', error = error)
+    return render_template('error.html', error = error, error_code = 404)
+
+@app.errorhandler(500)
+def not_found(error):
+    return render_template('error.html', error = error, error_code = 500)
+
 
 @app.route('/')
 def index():
