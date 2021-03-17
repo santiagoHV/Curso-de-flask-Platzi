@@ -1,5 +1,6 @@
 from flask import Flask, request, make_response, redirect, render_template, session
 from flask_bootstrap import Bootstrap
+from Login import LoginForm
 
 app = Flask(__name__) #Se instancia la aplicación
 bootstrap = Bootstrap(app)# se instancia bootstrap
@@ -33,9 +34,11 @@ def index():
 @app.route('/hello') #Ruta en la que se correra la funcion
 def hello():
     user_ip = session.get('user_ip')
+    login_form = LoginForm()
     context = {
         'user_ip': user_ip,
-        'to_dos': to_dos
+        'to_dos': to_dos,
+        'login_form': login_form
     } #diccionario con los valores a pasar al template
 
     return render_template('hello.html', **context) # ** expande el diccionario
