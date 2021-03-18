@@ -1,13 +1,9 @@
-from flask import Flask, request, make_response, redirect, render_template, session, url_for, flash
-from flask_bootstrap import Bootstrap
-from Login import LoginForm
+from flask import request, make_response, redirect, render_template, session, url_for, flash
+from app.forms import LoginForm
+from app import create_app
 import unittest
 
-app = Flask(__name__) #Se instancia la aplicación
-bootstrap = Bootstrap(app)# se instancia bootstrap
-
-app.config['SECRET_KEY'] = 'SUPER SECRETO' #Se configura una llave secreta
-
+app = create_app()
 
 
 to_dos = ['Comprar pan','Pagar la luz','Dormir']
