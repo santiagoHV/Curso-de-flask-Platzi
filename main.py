@@ -1,12 +1,11 @@
-from flask import request, make_response, redirect, render_template, session, url_for, flash
-from app.forms import LoginForm
+from flask import request, make_response, redirect, render_template, session
 from app import create_app
+from app.firestore_service import get_users, get_todos
 import unittest
+
 
 app = create_app()
 
-
-to_dos = ['Comprar pan','Pagar la luz','Dormir']
 
 @app.cli.command() #Hace que el nombre de la funcion sea un comando
 def test():
@@ -42,9 +41,11 @@ def hello():
 
     context = {
         'user_ip': user_ip,
-        'to_dos': to_dos,
+        'to_dos': get_todos(user_id=username),
         'username': username
     } #diccionario con los valores a pasar al template
+
+    print(context['to_dos'])
 
 
     return render_template('hello.html', **context) # ** expande el diccionario
