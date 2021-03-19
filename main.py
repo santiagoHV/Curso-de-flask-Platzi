@@ -35,25 +35,16 @@ def index():
     return response
 
 
-@app.route('/hello', methods=['GET', 'POST']) #Ruta en la que se correra la funcion
+@app.route('/hello', methods=['GET']) #Ruta en la que se correra la funcion
 def hello():
     user_ip = session.get('user_ip')
-    login_form = LoginForm()
     username = session.get('username')
 
     context = {
         'user_ip': user_ip,
         'to_dos': to_dos,
-        'login_form': login_form,
         'username': username
     } #diccionario con los valores a pasar al template
 
-    if login_form.validate_on_submit():
-        username = login_form.username.data
-        session['username'] = username
-
-        flash('Nombre de usuario registrado con exito') #Manda un mensaje tipo alert
-
-        return redirect(url_for('index'))
 
     return render_template('hello.html', **context) # ** expande el diccionario
