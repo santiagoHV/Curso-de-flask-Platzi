@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macros %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block title %}
     {{ super() }}
@@ -16,11 +17,17 @@
     {% else %}
         <a href="{{ url_for('index') }}">Inicio</a>
     {% endif %}
-
-
-    <ul>
+    <ul class="list-group">
         {% for to_do in to_dos %}
-            {{ macros.render_todo(to_do) }}
+            {{ macros.render_todo(to_do, delete_todo, update_todo) }}
         {% endfor %}
     </ul>
+
+    <div class="container">
+        <h2>Crea una nueva tarea</h2>
+
+        {{ wtf.quick_form(todo_form) }}
+    </div>
+
+
 {% endblock %}
