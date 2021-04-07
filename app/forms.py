@@ -12,6 +12,7 @@ class ToDoForm(FlaskForm):
     descriptrion = StringField('Descripción', validators=[DataRequired()])
     submit = SubmitField('Crear')
 
+
 class DeleteToDoForm(FlaskForm):
     submit = SubmitField('Borrar')
 

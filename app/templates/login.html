@@ -1,19 +1,44 @@
-{% extends 'base.html' %}
+{%  extends 'bootstrap/base.html'%}
 {% import 'bootstrap/wtf.html' as wtf %}
-{% block title %}
-    {{ super() }}
-    Login
-{% endblock %}
 
-{% block content %}
-    <div class="container">
+{% block head %}
+    {{ super() }}
+
+    <title>Flask platzi | Login</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'css/main.css') }}" />
+{% endblock %}
+{% block body %}
+    {% if get_flashed_messages()[0] %}
+        <div class="alert alert-success alert-dismissable">
+            <button type="button"
+                    data-dismiss="alert"
+                    class="close"
+                    style="margin: 0">
+
+                &times;
+            </button>
+            <p>{{ get_flashed_messages()[0] }}</p>
+        </div>
+    {% endif %}
+    <div class="container login-panel">
 {#        <form action="{{ url_for('hello') }}" method="post">#}
 {#            Este recibe el objeto y crea un formulario#}
-{#            {{ login_form.username }}#}
+{#           {{ login_form.username(class="ola") }}#}
 {#            {{ login_form.username.label }}#}
 {#        </form>#}
         {# Este crea re gratis un formulario traido de bootstrap re completo#}
+        <h2>LOG-IN</h2>
         {{ wtf.quick_form(login_form) }}
+
+        <p>
+            <a href="{{ url_for('auth.singup') }}">
+                Nuevo registro
+            </a>
+        </p>
     </div>
 
+
+    {% block scripts %}
+        {{ super() }}
+    {% endblock %}
 {% endblock %}

@@ -4,7 +4,7 @@ from . import auth
 from app.forms import LoginForm
 from app.firestore_service import get_user, user_put
 from app.models import UserData, UserModel
-from werkzeug.security import generate_password_hash #libreria de seguridad
+from werkzeug.security import generate_password_hash, check_password_hash #libreria de seguridad
 
 @auth.route('logout')
 @login_required
@@ -31,7 +31,7 @@ def login():
         if user_doc.to_dict() is not None:
             password_from_db = user_doc.to_dict()['password']
 
-            if password_from_db == password:
+            if check_password_hash(password_from_db, password):
                 user_data = UserData(username,password)
                 user = UserModel(user_data)
 

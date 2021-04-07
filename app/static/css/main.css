@@ -4,3 +4,55 @@ html * {
 img{
     max-height: 50px;
 }
+body{
+    background-image: url("../images/login-background.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black;
+}
+.login-panel{
+    margin: auto;
+    margin-top: 10%;
+    height: 400px;
+    width: 400px;
+    background-color: RGBA(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 10px;
+
+}
+.login-panel h2{
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+.login-panel form{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+    width: 100%;
+}
+.login-panel label, button{
+    margin-top: 15px;
+}
+.login-panel input{
+    color: white;
+    background-color: RGBA(0,0,0,0.5);
+}
+.login-panel input[type='submit']{
+    color: white;
+    background-color: rgb(0, 47, 69);
+}
+
+.login-panel p{
+    margin-top: 30px;
+}
+
+.login-panel p>a{
+    color: white;
+}
+
